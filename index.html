@@ -1,0 +1,302 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Neel Kochhar</title>
+  <meta name="description" content="Neel Kochhar: computer science student at the University of Calgary building LLM agents, simulations and neural networks from first principles.">
+  <meta name="theme-color" content="#0c0c0b">
+  <meta property="og:title" content="Neel Kochhar">
+  <meta property="og:description" content="Computer science at the University of Calgary. Builder of Cadence, a calendar you talk to.">
+  <meta property="og:image" content="assets/cadence-poster.jpg">
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&family=Fragment+Mono&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <script>document.documentElement.classList.add("js")</script>
+</head>
+<body>
+  <a class="skip" href="#work">Skip to work</a>
+
+  <header class="nav" data-nav>
+    <div class="nav-inner wrap">
+      <a class="nav-name" href="#top">Neel Kochhar</a>
+      <nav class="nav-links" aria-label="Sections">
+        <a href="#work">Work</a>
+        <a href="#about">About</a>
+        <a href="#contact">Contact</a>
+      </nav>
+      <a class="btn btn-ghost btn-sm" href="assets/neel-kochhar-resume.pdf" target="_blank" rel="noopener">Resume</a>
+    </div>
+  </header>
+
+  <main id="top">
+
+    <section class="hero wrap">
+      <div class="hero-text">
+        <p class="hero-meta mono"><span class="dot" aria-hidden="true"></span><span data-clock>Calgary, AB</span></p>
+        <h1 class="hero-name">Neel Kochhar</h1>
+        <p class="hero-lede">
+          Computer science at the University of Calgary. Lately I've been building LLM agents and learning to
+          ship them properly, with tests, evals and real deployments.
+        </p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#work">See my work</a>
+          <a class="btn btn-ghost" href="assets/neel-kochhar-resume.pdf" target="_blank" rel="noopener">Resume</a>
+          <span class="hero-social">
+            <a class="icon-link" href="https://github.com/n3el-k" target="_blank" rel="noopener" aria-label="GitHub">
+              <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
+            </a>
+            <a class="icon-link" href="https://www.linkedin.com/in/nk30" target="_blank" rel="noopener" aria-label="LinkedIn">
+              <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M0 1.15C0 .52.52 0 1.17 0h13.66C15.48 0 16 .52 16 1.15v13.7c0 .63-.52 1.15-1.17 1.15H1.17C.52 16 0 15.48 0 14.85V1.15zm4.94 12.24V6.17H2.54v7.22h2.4zM3.74 5.18c.84 0 1.36-.55 1.36-1.25-.02-.71-.52-1.25-1.34-1.25-.82 0-1.36.54-1.36 1.25 0 .7.52 1.25 1.33 1.25h.01zm4.91 8.21V9.36c0-.22.02-.43.08-.58.17-.43.57-.88 1.23-.88.87 0 1.21.66 1.21 1.63v3.86h2.4V9.25c0-2.22-1.18-3.25-2.76-3.25-1.28 0-1.84.7-2.16 1.2v.02h-.02l.02-.02V6.17h-2.4c.03.68 0 7.22 0 7.22h2.4z"/></svg>
+            </a>
+            <a class="icon-link" href="mailto:neel.kochhar28@gmail.com" aria-label="Email">
+              <svg viewBox="0 0 16 16" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="1.3" d="M1.5 3.5h13v9h-13zM1.5 3.5 8 8.75l6.5-5.25"/></svg>
+            </a>
+          </span>
+        </div>
+      </div>
+
+      <figure class="hero-pendulum">
+        <canvas data-hero-pendulum tabindex="0"
+                aria-label="Interactive pendulum. Drag the bob or use the arrow keys to set its angle."></canvas>
+        <figcaption class="mono">drag the bob · my <a href="#pendulum">C++ pendulum sim</a>, ported to JS</figcaption>
+      </figure>
+    </section>
+
+    <section class="section wrap" id="work">
+      <header class="section-head" data-reveal>
+        <h2>Selected work</h2>
+        <p class="mono">2026</p>
+      </header>
+
+      <article class="feature" id="cadence" data-reveal>
+        <div class="feature-top">
+          <div>
+            <p class="badge mono"><span class="dot" aria-hidden="true"></span>Featured · live on Fly.io</p>
+            <h3 class="feature-title">Cadence</h3>
+            <p class="feature-lede">
+              A calendar you talk to. Type “move both standups to 10am” and an LLM agent finds, edits and adds
+              the events, holding anything that conflicts until you confirm it.
+            </p>
+          </div>
+          <div class="feature-actions">
+            <a class="btn btn-primary" href="https://cadence-cal.fly.dev" target="_blank" rel="noopener">Try the live demo <span class="arrow" aria-hidden="true">↗</span></a>
+            <a class="btn btn-ghost" href="https://github.com/n3el-k/cadence" target="_blank" rel="noopener">Source <span class="arrow" aria-hidden="true">↗</span></a>
+          </div>
+        </div>
+
+        <figure class="browser">
+          <div class="browser-bar" aria-hidden="true">
+            <span class="browser-dots"><i></i><i></i><i></i></span>
+            <span class="browser-url mono">cadence-cal.fly.dev</span>
+          </div>
+          <div class="browser-view">
+            <video data-autoplay muted loop playsinline preload="metadata" poster="assets/cadence-poster.jpg"
+                   aria-label="Screen recording of Cadence adding and moving calendar events from typed sentences">
+              <source src="assets/cadence-demo.mp4" type="video/mp4">
+            </video>
+            <button class="video-toggle" type="button" data-video-toggle aria-label="Pause video">
+              <svg class="i-pause" viewBox="0 0 16 16" aria-hidden="true"><path d="M4 3h3v10H4zM9 3h3v10H9z"/></svg>
+              <svg class="i-play" viewBox="0 0 16 16" aria-hidden="true"><path d="M4 2.5v11l9-5.5z"/></svg>
+            </button>
+          </div>
+        </figure>
+
+        <dl class="stats">
+          <div><dt>eval cases passing on Claude Haiku</dt><dd>59<span>/59</span></dd></div>
+          <div><dt>pytest tests</dt><dd>55</dd></div>
+          <div><dt>avg quick-mode response</dt><dd>1.3–1.8<span>s</span></dd></div>
+          <div><dt>avg multi-step agent request</dt><dd>3.45<span>s</span></dd></div>
+        </dl>
+
+        <div class="feature-body">
+          <section>
+            <h4 class="mono">How it works</h4>
+            <ul class="points">
+              <li><strong>Quick mode.</strong> One LLM call turns a sentence into a validated add, update or remove, checked against Pydantic models with Instructor. Works with Claude or a local Ollama model.</li>
+              <li><strong>Agent mode.</strong> A hand-written tool-calling loop on the Anthropic SDK (search, add, update, remove) with an 8-step cap. Validation errors go back to the model so it can correct itself.</li>
+              <li><strong>Safe by construction.</strong> The agent has no confirm tool, so it can't approve its own conflicts, and the session id never appears in a tool schema, so it can't reach another visitor's calendar.</li>
+            </ul>
+          </section>
+          <section>
+            <h4 class="mono">Problems I solved</h4>
+            <ul class="points">
+              <li><strong>The model was bad at date math,</strong> so now it doesn't do any. The prompt carries a 7-day lookup table, and the date logic became plain, testable Python.</li>
+              <li><strong>Local inference was too slow.</strong> I moved from Ollama to Claude Haiku behind a provider factory, which made quick mode feel instant and the agent loop practical.</li>
+              <li><strong>An eval failed, and the test was wrong.</strong> The agent asked which of two events I meant. I fixed the test instead of the prompt, so it still asks when a request is ambiguous.</li>
+            </ul>
+          </section>
+        </div>
+
+        <p class="stack mono">Python · FastAPI · Anthropic SDK · Pydantic · Instructor · SQLite · JavaScript · Docker · Fly.io</p>
+      </article>
+
+      <div class="cards">
+        <article class="card" id="pendulum" data-reveal>
+          <div class="card-media media-black">
+            <video data-autoplay muted loop playsinline preload="metadata" poster="assets/pendulum-poster.jpg"
+                   aria-label="Screen recording of the pendulum simulation swinging and being dragged">
+              <source src="assets/pendulum-demo.mp4" type="video/mp4">
+            </video>
+          </div>
+          <div class="card-body">
+            <h3><a href="https://github.com/n3el-k/swinging-pendulum" target="_blank" rel="noopener">Swinging Pendulum <span class="arrow" aria-hidden="true">↗</span></a></h3>
+            <p>
+              A real-time physics simulation in C++ and Raylib. Gravity and damping are integrated along the arc each
+              frame with delta time, and you can drag the bob to set it swinging.
+            </p>
+            <p class="card-meta mono">C++ · Raylib · Jan 2026</p>
+          </div>
+        </article>
+
+        <article class="card" id="gradient" data-reveal>
+          <div class="card-media">
+            <canvas data-loss-chart role="img"
+                    aria-label="Loss curves for learning rates 1, 0.1 and 2, computed live in the browser"></canvas>
+          </div>
+          <div class="card-body">
+            <h3><a href="https://github.com/n3el-k/gradient-descent-math-ia" target="_blank" rel="noopener">Gradient Descent, by Hand <span class="arrow" aria-hidden="true">↗</span></a></h3>
+            <p>
+              My IB Math HL paper. A 2-2-1 network in plain NumPy, with backpropagation derived by hand and no autograd,
+              trained on XOR to study how learning rate and initialization shape convergence. The chart re-runs it live.
+            </p>
+            <p class="card-meta mono">Python · NumPy · <a href="https://github.com/n3el-k/gradient-descent-math-ia/blob/main/math-paper.pdf" target="_blank" rel="noopener">Read the paper ↗</a></p>
+          </div>
+        </article>
+
+        <article class="card" id="opengl" data-reveal>
+          <div class="card-media">
+            <canvas data-cubes tabindex="0"
+                    aria-label="Interactive 3D scene of rotating textured cubes. Drag to look around; W A S D to move when focused."></canvas>
+            <span class="media-hint mono">drag to look · WASD to fly</span>
+          </div>
+          <div class="card-body">
+            <h3><a href="https://github.com/n3el-k/first-opengl" target="_blank" rel="noopener">First OpenGL <span class="arrow" aria-hidden="true">↗</span></a></h3>
+            <p>
+              Graphics from the ground up in C++: shaders, textures, GLM transforms and a free-look camera. This is my
+              final scene, running in WebGL with the original shaders, textures and cube positions.
+            </p>
+            <p class="card-meta mono">C++ · OpenGL · GLM · Jan 2026</p>
+          </div>
+        </article>
+      </div>
+
+      <aside class="next" id="dispatch" data-reveal>
+        <p class="next-status mono"><span class="dot" aria-hidden="true"></span>In progress</p>
+        <div class="next-text">
+          <h3>Dispatch Lab</h3>
+          <p>A discrete-event simulator, where the clock jumps from one scheduled event to the next instead of ticking.</p>
+        </div>
+        <p class="next-soon mono">Source coming soon</p>
+      </aside>
+
+      <div class="more" data-reveal>
+        <h3 class="more-title mono">Also on GitHub</h3>
+        <ul class="more-list">
+          <li>
+            <a href="https://github.com/n3el-k/cifar10-image-classification" target="_blank" rel="noopener">
+              <span class="more-name">CIFAR-10 classifier</span>
+              <span class="more-desc">CNN in PyTorch with data augmentation, from a small tanh net to a deeper ReLU one</span>
+              <span class="arrow" aria-hidden="true">↗</span>
+            </a>
+          </li>
+          <li>
+            <a href="https://github.com/n3el-k/sst2-sentiment-classification" target="_blank" rel="noopener">
+              <span class="more-name">SST-2 sentiment</span>
+              <span class="more-desc">Bidirectional RNN for sentiment classification, my first NLP project</span>
+              <span class="arrow" aria-hidden="true">↗</span>
+            </a>
+          </li>
+          <li>
+            <a href="https://github.com/n3el-k/build-llm-scratch" target="_blank" rel="noopener">
+              <span class="more-name">LLM from scratch</span>
+              <span class="more-desc">A transformer language model built step by step in PyTorch</span>
+              <span class="arrow" aria-hidden="true">↗</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="section wrap" id="about">
+      <header class="section-head" data-reveal>
+        <h2>About</h2>
+      </header>
+
+      <div class="about">
+        <div class="about-text" data-reveal>
+          <p class="about-lead">
+            I'm a first-year computer science student at the University of Calgary, most interested in machine
+            learning and the math underneath it.
+          </p>
+          <p>
+            I learn by rebuilding things: transformers with multi-head self-attention, vision transformers, CNNs, RNNs and
+            autoencoders, written from scratch in PyTorch and checked on real benchmarks like CIFAR-10 and SST-2. Lately
+            I've been shipping software people can actually use, and learning how to test systems whose output isn't
+            deterministic.
+          </p>
+          <p>
+            Outside of code I'm a national-level karate athlete, competing in WKF kumite (U21&nbsp;−60&nbsp;kg) and
+            training daily alongside school. I've also volunteered 600+ hours as an assistant instructor.
+          </p>
+        </div>
+
+        <div class="about-side" data-reveal>
+          <h3 class="side-title mono">Education &amp; experience</h3>
+          <ol class="timeline">
+            <li>
+              <span class="when mono">2026 – now</span>
+              <span class="what">BSc Computer Science</span>
+              <span class="where">University of Calgary</span>
+            </li>
+            <li>
+              <span class="when mono">2023 – now</span>
+              <span class="what">National-level karate athlete</span>
+              <span class="where">WKF kumite · U21 −60 kg</span>
+            </li>
+            <li>
+              <span class="when mono">2023 – 2026</span>
+              <span class="what">Assistant karate instructor</span>
+              <span class="where">600+ volunteer hours</span>
+            </li>
+          </ol>
+
+          <h3 class="side-title mono">Toolkit</h3>
+          <dl class="toolkit">
+            <div><dt>Languages</dt><dd>Python, C++, JavaScript, SQL</dd></div>
+            <div><dt>ML</dt><dd>PyTorch, NumPy, transformers, CNNs, RNNs</dd></div>
+            <div><dt>LLM &amp; backend</dt><dd>Anthropic API, Instructor, evals, FastAPI, Pydantic, SQLite</dd></div>
+            <div><dt>Tools</dt><dd>Docker, Git, pytest, Unix shell, Raylib</dd></div>
+            <div><dt>Math</dt><dd>Calculus, linear algebra</dd></div>
+          </dl>
+        </div>
+      </div>
+    </section>
+
+    <section class="section wrap contact" id="contact">
+      <div data-reveal>
+        <h2>Get in touch</h2>
+        <p class="contact-lead">Open to internships and research opportunities. Email is the fastest way to reach me.</p>
+        <div class="email-row">
+          <a class="email" href="mailto:neel.kochhar28@gmail.com">neel.kochhar28@gmail.com</a>
+          <button class="btn btn-ghost btn-sm" type="button" data-copy="neel.kochhar28@gmail.com">Copy</button>
+        </div>
+        <ul class="contact-links">
+          <li><a href="https://github.com/n3el-k" target="_blank" rel="noopener">GitHub <span class="arrow" aria-hidden="true">↗</span></a></li>
+          <li><a href="https://www.linkedin.com/in/nk30" target="_blank" rel="noopener">LinkedIn <span class="arrow" aria-hidden="true">↗</span></a></li>
+          <li><a href="assets/neel-kochhar-resume.pdf" target="_blank" rel="noopener">Resume <span class="arrow" aria-hidden="true">↗</span></a></li>
+        </ul>
+      </div>
+    </section>
+  </main>
+
+  <footer class="foot wrap mono">
+    <span>© 2026 Neel Kochhar</span>
+    <a href="#top">Back to top ↑</a>
+  </footer>
+
+  <script src="js/main.js" defer></script>
+</body>
+</html>
