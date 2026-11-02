@@ -68,7 +68,6 @@
     <section class="section wrap" id="work">
       <header class="section-head" data-reveal>
         <h2>Selected work</h2>
-        <p class="mono">2026</p>
       </header>
 
       <article class="feature" id="cadence" data-reveal>
@@ -147,7 +146,7 @@
               A real-time physics simulation in C++ and Raylib. Gravity and damping are integrated along the arc each
               frame with delta time, and you can drag the bob to set it swinging.
             </p>
-            <p class="card-meta mono">C++ · Raylib · Jan 2026</p>
+            <p class="card-meta mono">C++ · Raylib</p>
           </div>
         </article>
 
@@ -178,7 +177,7 @@
               Graphics from the ground up in C++: shaders, textures, GLM transforms and a free-look camera. This is my
               final scene, running in WebGL with the original shaders, textures and cube positions.
             </p>
-            <p class="card-meta mono">C++ · OpenGL · GLM · Jan 2026</p>
+            <p class="card-meta mono">C++ · OpenGL · GLM</p>
           </div>
         </article>
       </div>
@@ -187,7 +186,13 @@
         <p class="next-status mono"><span class="dot" aria-hidden="true"></span>In progress</p>
         <div class="next-text">
           <h3>Dispatch Lab</h3>
-          <p>A discrete-event simulator, where the clock jumps from one scheduled event to the next instead of ticking.</p>
+          <p>
+            A multi-depot fleet dispatch simulator: vehicles cycle between sources and sinks, queueing to load and
+            unload, and each time one frees up a dispatch policy decides where it goes next. I'm writing the
+            discrete-event engine from scratch (a heap of timestamped events, no SimPy) to compare fixed, greedy and
+            assignment-optimized policies on the same seeded scenarios.
+          </p>
+          <p class="next-stack mono">Python · heapq · SciPy · YAML scenarios</p>
         </div>
         <p class="next-soon mono">Source coming soon</p>
       </aside>
@@ -298,5 +303,6 @@
   </footer>
 
   <script src="js/main.js" defer></script>
+  <script data-goatcounter="https://n3el-k.goatcounter.com/count" async src="https://gc.zgo.at/count.js"></script>
 </body>
 </html>
