@@ -107,6 +107,51 @@ document.querySelectorAll("video[data-autoplay]").forEach((video) => {
   sync();
 });
 
+function harmonograph(canvas) {
+  const STEPS = 6000;
+  const DURATION = 260;
+  const points = new Float32Array(STEPS * 2);
+  for (let i = 0; i < STEPS; i++) {
+    const t = (i / STEPS) * DURATION;
+    const decay = Math.exp(-0.009 * t);
+    points[i * 2] = Math.sin(t) * decay;
+    points[i * 2 + 1] = Math.sin(1.012 * t + Math.PI / 2) * decay;
+  }
+
+  let progress = reduceMotion ? 1 : 0;
+  const view = fitCanvas(canvas, () => draw());
+
+  function draw() {
+    const { ctx, w, h } = view;
+    const cx = w * 0.5;
+    const cy = h * 0.46;
+    const scale = Math.min(w * 0.42, h * 0.44);
+    const shown = Math.max(2, Math.floor(STEPS * easeOut(progress)));
+
+    ctx.clearRect(0, 0, w, h);
+    ctx.strokeStyle = "rgba(236, 235, 230, 0.07)";
+    ctx.lineWidth = 1;
+    ctx.beginPath();
+    for (let i = 0; i < shown; i++) {
+      const x = cx + points[i * 2] * scale;
+      const y = cy + points[i * 2 + 1] * scale;
+      i ? ctx.lineTo(x, y) : ctx.moveTo(x, y);
+    }
+    ctx.stroke();
+  }
+
+  if (progress < 1) {
+    let last = performance.now();
+    const tick = (now) => {
+      progress = Math.min(1, progress + (now - last) / 4000);
+      last = now;
+      draw();
+      if (progress < 1) requestAnimationFrame(tick);
+    };
+    requestAnimationFrame(tick);
+  }
+}
+
 function pendulum(canvas) {
   const GRAVITY = 1000;
   const DAMPING = 0.1;
@@ -120,11 +165,16 @@ function pendulum(canvas) {
 
   const view = fitCanvas(canvas, draw);
   const SCALE_DEG = 45;
+  const MAX_SWING_DEG = 70;
+  const BOB = 14;
   const layout = () => {
     const ay = 20;
-    const fitWidth = (view.w / 2 - 22) / Math.sin((SCALE_DEG * Math.PI) / 180) - 33;
-    const r = Math.max(120, Math.min(view.h - ay - 76, fitWidth));
-    return { ax: view.w / 2, ay, r };
+    const half = view.w / 2 - BOB - 6;
+    const fitScale = (view.w / 2 - 22) / Math.sin((SCALE_DEG * Math.PI) / 180) - 33;
+    const fitSwing = half / Math.sin((MAX_SWING_DEG * Math.PI) / 180);
+    const r = Math.max(100, Math.min(view.h - ay - 76, fitScale, fitSwing));
+    const limit = Math.min(Math.PI / 2, Math.asin(Math.min(1, Math.max(0, half) / r)));
+    return { ax: view.w / 2, ay, r, limit };
   };
 
   function update(dt) {
@@ -196,7 +246,7 @@ function pendulum(canvas) {
 
     ctx.fillStyle = accent;
     ctx.beginPath();
-    ctx.arc(bx, by, 14, 0, Math.PI * 2);
+    ctx.arc(bx, by, BOB, 0, Math.PI * 2);
     ctx.fill();
 
     const deg = ((theta * 180) / Math.PI).toFixed(1);
@@ -209,7 +259,7 @@ function pendulum(canvas) {
   }
 
   function setAngle(theta) {
-    const limit = Math.PI * 0.94;
+    const { limit } = layout();
     pos = Math.max(-limit, Math.min(limit, theta)) * LENGTH;
     velocity = 0;
     trail.length = 0;
@@ -636,6 +686,8 @@ function cubes(canvas) {
   });
 }
 
+const backdrop = document.querySelector("[data-backdrop]");
+if (backdrop) harmonograph(backdrop);
 const heroPendulum = document.querySelector("[data-hero-pendulum]");
 if (heroPendulum) pendulum(heroPendulum);
 const chart = document.querySelector("[data-loss-chart]");
