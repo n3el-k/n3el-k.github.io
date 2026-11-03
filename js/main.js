@@ -39,6 +39,22 @@ function whileVisible(el, frame) {
 
 const easeOut = (t) => 1 - (1 - t) ** 3;
 
+function animateOnce(el, duration, frame) {
+  if (reduceMotion) return;
+  const observer = new IntersectionObserver(([entry]) => {
+    if (!entry.isIntersecting) return;
+    observer.disconnect();
+    const start = performance.now();
+    const tick = (now) => {
+      const p = Math.min(1, (now - start) / duration);
+      frame(p);
+      if (p < 1) requestAnimationFrame(tick);
+    };
+    requestAnimationFrame(tick);
+  }, { threshold: 0.3 });
+  observer.observe(el);
+}
+
 const nav = document.querySelector("[data-nav]");
 const onScroll = () => nav.classList.toggle("is-scrolled", window.scrollY > 8);
 window.addEventListener("scroll", onScroll, { passive: true });
@@ -120,11 +136,13 @@ function harmonograph(canvas) {
 
   let progress = reduceMotion ? 1 : 0;
   const view = fitCanvas(canvas, () => draw());
+  const centerX = parseFloat(canvas.dataset.cx ?? "0.5");
+  const centerY = parseFloat(canvas.dataset.cy ?? "0.46");
 
   function draw() {
     const { ctx, w, h } = view;
-    const cx = w * 0.5;
-    const cy = h * 0.46;
+    const cx = w * centerX;
+    const cy = h * centerY;
     const scale = Math.min(w * 0.42, h * 0.44);
     const shown = Math.max(2, Math.floor(STEPS * easeOut(progress)));
 
@@ -140,16 +158,59 @@ function harmonograph(canvas) {
     ctx.stroke();
   }
 
-  if (progress < 1) {
-    let last = performance.now();
-    const tick = (now) => {
-      progress = Math.min(1, progress + (now - last) / 4000);
-      last = now;
-      draw();
-      if (progress < 1) requestAnimationFrame(tick);
-    };
-    requestAnimationFrame(tick);
-  }
+  animateOnce(canvas, 4000, (p) => {
+    progress = p;
+    draw();
+  });
+}
+
+function spotlight(el) {
+  if (!window.matchMedia("(hover: hover)").matches) return;
+  el.addEventListener("pointermove", (e) => {
+    const rect = el.getBoundingClientRect();
+    el.style.setProperty("--mx", `${e.clientX - rect.left}px`);
+    el.style.setProperty("--my", `${e.clientY - rect.top}px`);
+  });
+  el.addEventListener("pointerleave", () => {
+    el.style.removeProperty("--mx");
+    el.style.removeProperty("--my");
+  });
+}
+
+function countUp(container) {
+  if (reduceMotion) return;
+  const NUMBER = /\d+(?:\.\d+)?/g;
+  const nodes = [...container.querySelectorAll("dd")]
+    .map((dd) => dd.firstChild)
+    .filter((node) => node && node.nodeType === Node.TEXT_NODE);
+  const originals = nodes.map((node) => node.textContent);
+  const render = (p) => nodes.forEach((node, i) => {
+    node.textContent = p >= 1
+      ? originals[i]
+      : originals[i].replace(NUMBER, (m) => (parseFloat(m) * p).toFixed((m.split(".")[1] || "").length));
+  });
+  render(0);
+  animateOnce(container, 1400, (p) => render(p >= 1 ? 1 : easeOut(p)));
+}
+
+function tiltIn(frame) {
+  if (reduceMotion) return;
+  let queued = false;
+  const update = () => {
+    queued = false;
+    const top = frame.getBoundingClientRect().top;
+    const p = Math.min(1, Math.max(0, (innerHeight - top) / (innerHeight * 0.7)));
+    frame.style.setProperty("--tilt", `${((1 - p) * 14).toFixed(2)}deg`);
+    frame.style.setProperty("--lift", (0.94 + 0.06 * p).toFixed(3));
+  };
+  const queue = () => {
+    if (queued) return;
+    queued = true;
+    requestAnimationFrame(update);
+  };
+  window.addEventListener("scroll", queue, { passive: true });
+  window.addEventListener("resize", queue);
+  update();
 }
 
 function pendulum(canvas) {
@@ -686,8 +747,12 @@ function cubes(canvas) {
   });
 }
 
-const backdrop = document.querySelector("[data-backdrop]");
-if (backdrop) harmonograph(backdrop);
+document.querySelectorAll("[data-backdrop]").forEach(harmonograph);
+document.querySelectorAll("[data-spotlight]").forEach(spotlight);
+const stats = document.querySelector(".stats");
+if (stats) countUp(stats);
+const demoFrame = document.querySelector(".browser");
+if (demoFrame) tiltIn(demoFrame);
 const heroPendulum = document.querySelector("[data-hero-pendulum]");
 if (heroPendulum) pendulum(heroPendulum);
 const chart = document.querySelector("[data-loss-chart]");
