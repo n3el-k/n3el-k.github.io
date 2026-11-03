@@ -278,8 +278,7 @@ a:hover .arrow { transform: translate(2px, -2px); }
   .hero-pendulum { display: block; }
 }
 
-.section { padding-block: clamp(72px, 10vw, 136px); }
-#work { padding-bottom: clamp(32px, 4vw, 48px); }
+.section { padding-block: clamp(32px, 4.5vw, 56px); }
 
 .section-head { margin-bottom: clamp(32px, 4vw, 48px); }
 .section-head h2 {
@@ -729,7 +728,7 @@ a:hover .arrow { transform: translate(2px, -2px); }
 
 .contact {
   position: relative;
-  padding-bottom: clamp(80px, 12vw, 160px);
+  padding-bottom: clamp(64px, 8vw, 112px);
 }
 
 .backdrop-end {
