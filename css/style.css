@@ -269,6 +269,7 @@ a:hover .arrow { transform: translate(2px, -2px); }
 }
 
 .section { padding-block: clamp(72px, 10vw, 136px); }
+#work { padding-bottom: clamp(32px, 4vw, 48px); }
 
 .section-head {
   display: flex;
