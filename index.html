@@ -133,6 +133,91 @@
         <p class="stack mono">Python · FastAPI · Anthropic SDK · Pydantic · Instructor · SQLite · JavaScript · Docker · Fly.io</p>
       </article>
 
+      <article class="feature" id="delphi" data-reveal data-spotlight>
+        <div class="feature-top">
+          <div>
+            <p class="badge mono"><span class="dot" aria-hidden="true"></span>My first hackathon · Hack the Change 2026, Calgary</p>
+            <h3 class="feature-title">Delphi</h3>
+            <p class="feature-lede">
+              AI writes code for you; Delphi makes sure you understand it. An AI senior reviewer reads your real GitHub
+              pull requests and won't approve one until you can explain what your code does.
+            </p>
+          </div>
+          <div class="feature-actions">
+            <a class="btn btn-primary" href="https://youtu.be/YiKDJ3Ivrbg" target="_blank" rel="noopener">Watch the pitch <span class="arrow" aria-hidden="true">↗</span></a>
+            <a class="btn btn-ghost" href="https://github.com/n3el-k/delphi" target="_blank" rel="noopener">Source <span class="arrow" aria-hidden="true">↗</span></a>
+          </div>
+        </div>
+
+        <div class="carousel" data-carousel>
+          <figure class="browser">
+            <div class="browser-bar" aria-hidden="true">
+              <span class="browser-dots"><i></i><i></i><i></i></span>
+              <span class="browser-url mono">localhost:5173</span>
+            </div>
+            <div class="browser-view">
+              <div class="carousel-track" data-carousel-track tabindex="0" role="region"
+                   aria-roledescription="carousel" aria-label="Delphi screenshots">
+              <img src="assets/delphi-1-dashboard.jpg" width="1200" height="796"
+                   data-caption="Dashboard · the skill map fills in as you pass reviews" alt="Delphi's dashboard: a 'Know thy code' welcome card explaining the three steps, a skill map from Frontend to Testing, and the AI rule">
+              <img src="assets/delphi-2-tickets.jpg" width="1200" height="796" loading="lazy"
+                   data-caption="New project · tickets say why and what “done” means, never how" alt="Tickets Delphi generated for a calculator app, the first expanded to show its 'Done when' checklist">
+              <img src="assets/delphi-3-review.jpg" width="1200" height="796" loading="lazy"
+                   data-caption="Code review · a security finding, a question and a hint, never the fix" alt="Delphi's review of a pull request flagging a code injection bug (CWE-94) on line 32 of calculator.py, with a question and a first hint">
+              <img src="assets/delphi-4-questions.jpg" width="1200" height="796" loading="lazy"
+                   data-caption="The gate · questions about your own diff, 70 to pass" alt="Questions about the learner's own diff, each pointing at a line in calculator.py, with an answer box">
+              <img src="assets/delphi-5-portfolio.jpg" width="1200" height="796" loading="lazy"
+                   data-caption="Portfolio · approved work and the security flaws you fixed" alt="The learner's portfolio listing an approved pull request and the code injection fix">
+              </div>
+              <button class="carousel-arrow carousel-prev" type="button" data-carousel-prev aria-label="Previous screenshot">
+                <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M10 3 5 8l5 5"/></svg>
+              </button>
+              <button class="carousel-arrow carousel-next" type="button" data-carousel-next aria-label="Next screenshot">
+                <svg viewBox="0 0 16 16" aria-hidden="true"><path d="m6 3 5 5-5 5"/></svg>
+              </button>
+            </div>
+          </figure>
+          <div class="carousel-foot">
+            <p class="carousel-caption mono" data-carousel-caption aria-live="polite"><span>1 / 5</span>Dashboard · the skill map fills in as you pass reviews</p>
+            <div class="carousel-dots" data-carousel-dots>
+            <button type="button" aria-label="Screenshot 1: Dashboard"></button>
+            <button type="button" aria-label="Screenshot 2: New project"></button>
+            <button type="button" aria-label="Screenshot 3: Code review"></button>
+            <button type="button" aria-label="Screenshot 4: The gate"></button>
+            <button type="button" aria-label="Screenshot 5: Portfolio"></button>
+            </div>
+          </div>
+        </div>
+
+        <dl class="stats">
+          <div><dt>hours from first commit to submission</dt><dd>26</dd></div>
+          <div><dt>pytest tests, with GitHub and Claude faked</dt><dd>99</dd></div>
+          <div><dt>from opening a pull request to a full review</dt><dd>~30<span>s</span></dd></div>
+          <div><dt>people on the team</dt><dd>2</dd></div>
+        </dl>
+
+        <div class="feature-body">
+          <section>
+            <h4 class="mono">How it works</h4>
+            <ul class="points">
+              <li><strong>Idea to tickets.</strong> Describe a project in plain words and Claude turns it into 3–5 tickets that say why and what “done” means, never how.</li>
+              <li><strong>Instant, Socratic review.</strong> The moment you open a pull request or push to it, a GitHub App webhook fires and Delphi starts reading the diff, with a review on the PR about 30 seconds later: questions, a security or correctness finding, and a hint ladder (the concept, then where to look, then a small snippet). It never posts the fix.</li>
+              <li><strong>Comprehension gate.</strong> Delphi asks 2–3 questions about your own diff. A weak answer gets the next hint, not approval. Pass, and the bot approves the PR.</li>
+            </ul>
+          </section>
+          <section>
+            <h4 class="mono">What I built</h4>
+            <ul class="points">
+              <li><strong>The reviewer service.</strong> Every Claude call returns a Pydantic model through structured output, with refusals and API errors handled, so a failed review shows a clear retry instead of a stale fallback.</li>
+              <li><strong>The webhook pipeline.</strong> Each GitHub delivery is checked with HMAC-SHA256 and a constant-time compare, then answered straight away so GitHub never times out. Fetching the diff, the Claude review and the bot comment run in a background task, and a repeat delivery of the same push is skipped instead of reviewed twice.</li>
+              <li><strong>Grading and approval.</strong> Grading your answers, stepping through the hint ladder, approving the PR on a pass, and letting you flag any review, finding or grade you disagree with.</li>
+            </ul>
+          </section>
+        </div>
+
+        <p class="stack mono">Python · FastAPI · Anthropic SDK · Pydantic · SQLModel · SQLite · GitHub Apps · React · TypeScript · Tailwind</p>
+      </article>
+
       <div class="cards">
         <article class="card" id="pendulum" data-reveal>
           <div class="card-media media-black">
@@ -182,21 +267,6 @@
           </div>
         </article>
       </div>
-
-      <aside class="next" id="dispatch" data-reveal data-spotlight>
-        <p class="next-status mono"><span class="dot" aria-hidden="true"></span>In progress</p>
-        <div class="next-text">
-          <h3>Dispatch Lab</h3>
-          <p>
-            A multi-depot fleet dispatch simulator: vehicles cycle between sources and sinks, queueing to load and
-            unload, and each time one frees up a dispatch policy decides where it goes next. I'm writing the
-            discrete-event engine from scratch (a heap of timestamped events, no SimPy) to compare fixed, greedy and
-            assignment-optimized policies on the same seeded scenarios.
-          </p>
-          <p class="next-stack mono">Python · heapq · SciPy · YAML scenarios</p>
-        </div>
-        <p class="next-soon mono">Source coming soon</p>
-      </aside>
 
       <div class="more" data-reveal>
         <h3 class="more-title mono">Also on GitHub</h3>

@@ -747,6 +747,51 @@ function cubes(canvas) {
   });
 }
 
+function carousel(root) {
+  const track = root.querySelector("[data-carousel-track]");
+  const slides = [...track.children];
+  const caption = root.querySelector("[data-carousel-caption]");
+  const dots = [...root.querySelectorAll("[data-carousel-dots] button")];
+  let index = 0;
+  let steering = false;
+  let release = 0;
+
+  const render = () => {
+    const count = document.createElement("span");
+    count.textContent = `${index + 1} / ${slides.length}`;
+    caption.replaceChildren(count, slides[index].dataset.caption);
+    dots.forEach((dot, n) => dot.setAttribute("aria-current", n === index ? "true" : "false"));
+  };
+  const show = (i) => {
+    index = (i + slides.length) % slides.length;
+    render();
+    // While the arrows drive the scroll, ignore the in-between positions it passes through.
+    steering = true;
+    clearTimeout(release);
+    release = setTimeout(() => { steering = false; }, 800);
+    track.scrollTo({ left: slides[index].offsetLeft, behavior: reduceMotion ? "auto" : "smooth" });
+  };
+  const follow = () => {
+    if (steering) return;
+    const i = Math.min(Math.max(Math.round(track.scrollLeft / track.clientWidth), 0), slides.length - 1);
+    if (i !== index) { index = i; render(); }
+  };
+
+  root.querySelector("[data-carousel-prev]").addEventListener("click", () => show(index - 1));
+  root.querySelector("[data-carousel-next]").addEventListener("click", () => show(index + 1));
+  dots.forEach((dot, n) => dot.addEventListener("click", () => show(n)));
+  track.addEventListener("keydown", (e) => {
+    if (e.key !== "ArrowLeft" && e.key !== "ArrowRight") return;
+    e.preventDefault();
+    show(index + (e.key === "ArrowRight" ? 1 : -1));
+  });
+  track.addEventListener("scroll", follow, { passive: true });
+  track.addEventListener("scrollend", () => { steering = false; follow(); });
+  window.addEventListener("resize", () => { track.scrollLeft = slides[index].offsetLeft; });
+  render();
+}
+
+document.querySelectorAll("[data-carousel]").forEach(carousel);
 document.querySelectorAll("[data-backdrop]").forEach(harmonograph);
 document.querySelectorAll("[data-spotlight]").forEach(spotlight);
 const stats = document.querySelector(".stats");
