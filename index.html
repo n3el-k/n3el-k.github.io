@@ -208,9 +208,9 @@
           <section>
             <h4 class="mono">What I built</h4>
             <ul class="points">
-              <li><strong>The reviewer service.</strong> Every Claude call returns a Pydantic model through structured output, with refusals and API errors handled, so a failed review shows a clear retry instead of a stale fallback.</li>
-              <li><strong>The webhook pipeline.</strong> Each GitHub delivery is checked with HMAC-SHA256 and a constant-time compare, then answered straight away so GitHub never times out. Fetching the diff, the Claude review and the bot comment run in a background task, and a repeat delivery of the same push is skipped instead of reviewed twice.</li>
-              <li><strong>Grading and approval.</strong> Grading your answers, stepping through the hint ladder, approving the PR on a pass, and letting you flag any review, finding or grade you disagree with.</li>
+              <li><strong>Built with a teammate in 26 hours</strong> at Hack the Change 2026: a GitHub App that reviews learners’ real pull requests and won’t approve one until they can explain their own code.</li>
+              <li><strong>Designed the Claude reviewer</strong> with Pydantic-validated structured output: a Socratic review flagging security and correctness bugs (e.g. CWE-94 code injection), hints that never give the fix, and graded questions on the diff.</li>
+              <li><strong>Built the FastAPI webhook pipeline:</strong> HMAC-SHA256 signature checks, an immediate response with the review run in the background, duplicate-delivery handling, and PR approval on a passing score; covered by a 99-test pytest suite.</li>
             </ul>
           </section>
         </div>
