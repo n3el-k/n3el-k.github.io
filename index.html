@@ -5,377 +5,323 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Neel Kochhar</title>
   <meta name="description" content="Neel Kochhar: computer science student at the University of Calgary building LLM agents, simulations and neural networks from first principles.">
-  <meta name="theme-color" content="#0c0c0b">
+  <meta name="theme-color" content="#0b0b0a">
   <meta property="og:title" content="Neel Kochhar">
   <meta property="og:description" content="Computer science at the University of Calgary. Builder of Cadence, a calendar you talk to.">
   <meta property="og:image" content="assets/cadence-poster.jpg">
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&family=Fragment+Mono&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css?v=24">
   <script>document.documentElement.classList.add("js")</script>
 </head>
 <body>
-  <a class="skip" href="#work">Skip to work</a>
-  <canvas class="backdrop" data-backdrop aria-hidden="true"></canvas>
 
-  <header class="nav" data-nav>
-    <div class="nav-inner wrap">
-      <a class="nav-name" href="#top">Neel Kochhar</a>
-      <nav class="nav-links" aria-label="Sections">
-        <a href="#work">Work</a>
-        <a href="#about">About</a>
-        <a href="#contact">Contact</a>
-      </nav>
-      <a class="btn btn-ghost btn-sm" href="assets/neel-kochhar-resume.pdf" target="_blank" rel="noopener">Resume</a>
+  <!-- The map: a loss surface whose minima are the projects. -->
+  <div class="stage" data-stage>
+    <canvas class="map" data-map-base aria-hidden="true"></canvas>
+    <canvas class="map map-over" data-map-over aria-hidden="true"></canvas>
+
+    <header class="who">
+      <h1>Neel Kochhar</h1>
+      <p>
+        Computer science student at the University of Calgary. I build LLM agents and ship them properly,
+        with tests, evals and real deployments.
+      </p>
+    </header>
+
+    <nav class="index" aria-label="Projects">
+      <p><span>Index</span><span>loss</span></p>
+      <ol>
+        <li><a href="#cadence" data-index="cadence"><span>Cadence</span><span data-loss-for="cadence"></span></a></li>
+        <li><a href="#delphi" data-index="delphi"><span>Delphi</span><span data-loss-for="delphi"></span></a></li>
+        <li><a href="#pytorch" data-index="pytorch"><span>From scratch, in PyTorch</span><span data-loss-for="pytorch"></span></a></li>
+        <li><a href="#opengl" data-index="opengl"><span>First OpenGL</span><span data-loss-for="opengl"></span></a></li>
+        <li><a href="#gradient" data-index="gradient"><span>Gradient Descent, by Hand</span><span data-loss-for="gradient"></span></a></li>
+        <li><a href="#pendulum" data-index="pendulum"><span>Swinging Pendulum</span><span data-loss-for="pendulum"></span></a></li>
+      </ol>
+    </nav>
+
+    <div class="minima">
+      <a class="min min-major" href="#cadence" data-min="cadence"><i></i><span><b>Cadence</b><small>A calendar you talk to</small></span></a>
+      <a class="min min-major" href="#delphi" data-min="delphi"><i></i><span><b>Delphi</b><small>An AI reviewer for your pull requests</small></span></a>
+      <a class="min" href="#pytorch" data-min="pytorch"><i></i><span><b>From scratch, in PyTorch</b><small>CNN, RNN, transformer</small></span></a>
+      <a class="min" href="#opengl" data-min="opengl"><i></i><span><b>First OpenGL</b><small>C++, live in WebGL</small></span></a>
+      <a class="min" href="#gradient" data-min="gradient"><i></i><span><b>Gradient Descent, by Hand</b><small>NumPy, IB Math paper</small></span></a>
+      <a class="min" href="#pendulum" data-min="pendulum"><i></i><span><b>Swinging Pendulum</b><small>C++, Raylib</small></span></a>
+      <a class="min min-start" href="#about" data-min="about"><i></i><span><b>About</b><small>initial weights</small></span></a>
     </div>
-  </header>
 
-  <main id="top">
+    <p class="readout" aria-hidden="true">
+      <span data-readout>loss 1.000 · step 0</span>
+      <span data-status>Click anywhere on the map to drop the optimizer.</span>
+    </p>
 
-    <section class="hero wrap">
-      <div class="hero-text">
-        <p class="hero-meta mono"><span class="dot" aria-hidden="true"></span><span data-clock>Calgary, AB</span></p>
-        <h1 class="hero-name">Neel Kochhar</h1>
-        <p class="hero-lede">
-          Computer science at the University of Calgary. Lately I've been building LLM agents and learning to
-          ship them properly, with tests, evals and real deployments.
-        </p>
-        <div class="hero-actions">
-          <a class="btn btn-primary" href="#work">See my work</a>
-          <a class="btn btn-ghost" href="assets/neel-kochhar-resume.pdf" target="_blank" rel="noopener">Resume</a>
-          <span class="hero-social">
-            <a class="icon-link" href="https://github.com/n3el-k" target="_blank" rel="noopener" aria-label="GitHub">
-              <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
-            </a>
-            <a class="icon-link" href="https://www.linkedin.com/in/nk30" target="_blank" rel="noopener" aria-label="LinkedIn">
-              <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M0 1.15C0 .52.52 0 1.17 0h13.66C15.48 0 16 .52 16 1.15v13.7c0 .63-.52 1.15-1.17 1.15H1.17C.52 16 0 15.48 0 14.85V1.15zm4.94 12.24V6.17H2.54v7.22h2.4zM3.74 5.18c.84 0 1.36-.55 1.36-1.25-.02-.71-.52-1.25-1.34-1.25-.82 0-1.36.54-1.36 1.25 0 .7.52 1.25 1.33 1.25h.01zm4.91 8.21V9.36c0-.22.02-.43.08-.58.17-.43.57-.88 1.23-.88.87 0 1.21.66 1.21 1.63v3.86h2.4V9.25c0-2.22-1.18-3.25-2.76-3.25-1.28 0-1.84.7-2.16 1.2v.02h-.02l.02-.02V6.17h-2.4c.03.68 0 7.22 0 7.22h2.4z"/></svg>
-            </a>
-            <a class="icon-link" href="mailto:neel.kochhar28@gmail.com" aria-label="Email">
-              <svg viewBox="0 0 16 16" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="1.3" d="M1.5 3.5h13v9h-13zM1.5 3.5 8 8.75l6.5-5.25"/></svg>
-            </a>
-          </span>
-        </div>
-      </div>
+    <nav class="links" aria-label="Contact">
+      <a href="#about">About</a>
+      <a href="mailto:neel.kochhar28@gmail.com">Email</a>
+      <a href="https://github.com/n3el-k" target="_blank" rel="noopener">GitHub</a>
+      <a href="https://www.linkedin.com/in/nk30" target="_blank" rel="noopener">LinkedIn</a>
+      <a href="assets/neel-kochhar-resume.pdf" target="_blank" rel="noopener">Resume</a>
+    </nav>
+  </div>
 
-      <figure class="hero-pendulum">
-        <canvas data-hero-pendulum tabindex="0"
-                aria-label="Interactive pendulum. Drag the bob or use the arrow keys to set its angle."></canvas>
-        <figcaption class="mono">drag the bob · my <a href="#pendulum">C++ pendulum sim</a>, ported to JS</figcaption>
+  <div class="scrim" data-scrim></div>
+
+  <main class="sheets" data-sheets>
+    <div class="sheet-bar">
+      <button type="button" data-close><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M10 3 5 8l5 5"/></svg>Map</button>
+      <span data-sheet-loss></span>
+    </div>
+
+    <article class="sheet" id="cadence">
+      <p class="kicker"><i aria-hidden="true"></i>Live on Fly.io</p>
+      <h2>Cadence</h2>
+      <p class="summary">
+        A calendar you talk to. Type “move both standups to 10am” and an LLM agent finds, edits and adds
+        the events, holding anything that conflicts until you confirm it.
+      </p>
+      <p class="actions">
+        <a class="btn btn-solid" href="https://cadence-cal.fly.dev" target="_blank" rel="noopener">Try the live demo <span aria-hidden="true">↗</span></a>
+        <a class="btn" href="https://github.com/n3el-k/cadence" target="_blank" rel="noopener">Source <span aria-hidden="true">↗</span></a>
+      </p>
+
+      <figure class="frame">
+        <video data-autoplay muted loop playsinline preload="metadata" poster="assets/cadence-poster.jpg"
+               width="1200" height="796"
+               aria-label="Screen recording of Cadence adding and moving calendar events from typed sentences">
+          <source src="assets/cadence-demo.mp4" type="video/mp4">
+        </video>
+        <button class="frame-toggle" type="button" data-video-toggle aria-label="Pause video">
+          <svg class="i-pause" viewBox="0 0 16 16" aria-hidden="true"><path d="M4 3h3v10H4zM9 3h3v10H9z"/></svg>
+          <svg class="i-play" viewBox="0 0 16 16" aria-hidden="true"><path d="M4 2.5v11l9-5.5z"/></svg>
+        </button>
       </figure>
-    </section>
 
-    <section class="section wrap" id="work">
-      <header class="section-head" data-reveal>
-        <h2>Selected work</h2>
-      </header>
+      <dl class="metrics">
+        <div><dt>eval cases passing on Claude Haiku</dt><dd>59<small>/59</small></dd></div>
+        <div><dt>pytest tests</dt><dd>55</dd></div>
+        <div><dt>average quick-mode response</dt><dd>1.3–1.8<small>s</small></dd></div>
+        <div><dt>average multi-step agent request</dt><dd>3.45<small>s</small></dd></div>
+      </dl>
 
-      <article class="feature" id="cadence" data-reveal data-spotlight>
-        <div class="feature-top">
-          <div>
-            <p class="badge mono"><span class="dot" aria-hidden="true"></span>Featured · live on Fly.io</p>
-            <h3 class="feature-title">Cadence</h3>
-            <p class="feature-lede">
-              A calendar you talk to. Type “move both standups to 10am” and an LLM agent finds, edits and adds
-              the events, holding anything that conflicts until you confirm it.
-            </p>
-          </div>
-          <div class="feature-actions">
-            <a class="btn btn-primary" href="https://cadence-cal.fly.dev" target="_blank" rel="noopener">Try the live demo <span class="arrow" aria-hidden="true">↗</span></a>
-            <a class="btn btn-ghost" href="https://github.com/n3el-k/cadence" target="_blank" rel="noopener">Source <span class="arrow" aria-hidden="true">↗</span></a>
-          </div>
-        </div>
-
-        <figure class="browser">
-          <div class="browser-bar" aria-hidden="true">
-            <span class="browser-dots"><i></i><i></i><i></i></span>
-            <span class="browser-url mono">cadence-cal.fly.dev</span>
-          </div>
-          <div class="browser-view">
-            <video data-autoplay muted loop playsinline preload="metadata" poster="assets/cadence-poster.jpg"
-                   aria-label="Screen recording of Cadence adding and moving calendar events from typed sentences">
-              <source src="assets/cadence-demo.mp4" type="video/mp4">
-            </video>
-            <button class="video-toggle" type="button" data-video-toggle aria-label="Pause video">
-              <svg class="i-pause" viewBox="0 0 16 16" aria-hidden="true"><path d="M4 3h3v10H4zM9 3h3v10H9z"/></svg>
-              <svg class="i-play" viewBox="0 0 16 16" aria-hidden="true"><path d="M4 2.5v11l9-5.5z"/></svg>
-            </button>
-          </div>
-        </figure>
-
-        <dl class="stats">
-          <div><dt>eval cases passing on Claude Haiku</dt><dd>59<span>/59</span></dd></div>
-          <div><dt>pytest tests</dt><dd>55</dd></div>
-          <div><dt>avg quick-mode response</dt><dd>1.3–1.8<span>s</span></dd></div>
-          <div><dt>avg multi-step agent request</dt><dd>3.45<span>s</span></dd></div>
-        </dl>
-
-        <div class="feature-body">
-          <section>
-            <h4 class="mono">How it works</h4>
-            <ul class="points">
-              <li><strong>Quick mode.</strong> One LLM call turns a sentence into a validated add, update or remove, checked against Pydantic models with Instructor. Works with Claude or a local Ollama model.</li>
-              <li><strong>Agent mode.</strong> A hand-written tool-calling loop on the Anthropic SDK (search, add, update, remove) with an 8-step cap. Validation errors go back to the model so it can correct itself.</li>
-              <li><strong>Safe by construction.</strong> The agent has no confirm tool, so it can't approve its own conflicts, and the session id never appears in a tool schema, so it can't reach another visitor's calendar.</li>
-            </ul>
-          </section>
-          <section>
-            <h4 class="mono">Problems I solved</h4>
-            <ul class="points">
-              <li><strong>The model was bad at date math,</strong> so now it doesn't do any. The prompt carries a 7-day lookup table, and the date logic became plain, testable Python.</li>
-              <li><strong>Local inference was too slow.</strong> I moved from Ollama to Claude Haiku behind a provider factory, which made quick mode feel instant and the agent loop practical.</li>
-              <li><strong>An eval failed, and the test was wrong.</strong> The agent asked which of two events I meant. I fixed the test instead of the prompt, so it still asks when a request is ambiguous.</li>
-            </ul>
-          </section>
-        </div>
-
-        <p class="stack mono">Python · FastAPI · Anthropic SDK · Pydantic · Instructor · SQLite · JavaScript · Docker · Fly.io</p>
-      </article>
-
-      <article class="feature" id="delphi" data-reveal data-spotlight>
-        <div class="feature-top">
-          <div>
-            <p class="badge mono"><span class="dot" aria-hidden="true"></span>My first hackathon · Hack the Change 2026, Calgary</p>
-            <h3 class="feature-title">Delphi</h3>
-            <p class="feature-lede">
-              AI writes code for you; Delphi makes sure you understand it. An AI senior reviewer reads your real GitHub
-              pull requests and won't approve one until you can explain what your code does.
-            </p>
-          </div>
-          <div class="feature-actions">
-            <a class="btn btn-primary" href="https://youtu.be/YiKDJ3Ivrbg" target="_blank" rel="noopener">Watch the pitch <span class="arrow" aria-hidden="true">↗</span></a>
-            <a class="btn btn-ghost" href="https://github.com/n3el-k/delphi" target="_blank" rel="noopener">Source <span class="arrow" aria-hidden="true">↗</span></a>
-          </div>
-        </div>
-
-        <div class="carousel" data-carousel>
-          <figure class="browser">
-            <div class="browser-bar" aria-hidden="true">
-              <span class="browser-dots"><i></i><i></i><i></i></span>
-              <span class="browser-url mono">localhost:5173</span>
-            </div>
-            <div class="browser-view">
-              <div class="carousel-track" data-carousel-track tabindex="0" role="region"
-                   aria-roledescription="carousel" aria-label="Delphi screenshots">
-              <img src="assets/delphi-1-dashboard.jpg" width="1200" height="796"
-                   data-caption="Dashboard · the skill map fills in as you pass reviews" alt="Delphi's dashboard: a 'Know thy code' welcome card explaining the three steps, a skill map from Frontend to Testing, and the AI rule">
-              <img src="assets/delphi-2-tickets.jpg" width="1200" height="796" loading="lazy"
-                   data-caption="New project · tickets say why and what “done” means, never how" alt="Tickets Delphi generated for a calculator app, the first expanded to show its 'Done when' checklist">
-              <img src="assets/delphi-3-review.jpg" width="1200" height="796" loading="lazy"
-                   data-caption="Code review · a security finding, a question and a hint, never the fix" alt="Delphi's review of a pull request flagging a code injection bug (CWE-94) on line 32 of calculator.py, with a question and a first hint">
-              <img src="assets/delphi-4-questions.jpg" width="1200" height="796" loading="lazy"
-                   data-caption="The gate · questions about your own diff, 70 to pass" alt="Questions about the learner's own diff, each pointing at a line in calculator.py, with an answer box">
-              <img src="assets/delphi-5-portfolio.jpg" width="1200" height="796" loading="lazy"
-                   data-caption="Portfolio · approved work and the security flaws you fixed" alt="The learner's portfolio listing an approved pull request and the code injection fix">
-              </div>
-              <button class="carousel-arrow carousel-prev" type="button" data-carousel-prev aria-label="Previous screenshot">
-                <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M10 3 5 8l5 5"/></svg>
-              </button>
-              <button class="carousel-arrow carousel-next" type="button" data-carousel-next aria-label="Next screenshot">
-                <svg viewBox="0 0 16 16" aria-hidden="true"><path d="m6 3 5 5-5 5"/></svg>
-              </button>
-            </div>
-          </figure>
-          <div class="carousel-foot">
-            <p class="carousel-caption mono" data-carousel-caption aria-live="polite"><span>1 / 5</span>Dashboard · the skill map fills in as you pass reviews</p>
-            <div class="carousel-dots" data-carousel-dots>
-            <button type="button" aria-label="Screenshot 1: Dashboard"></button>
-            <button type="button" aria-label="Screenshot 2: New project"></button>
-            <button type="button" aria-label="Screenshot 3: Code review"></button>
-            <button type="button" aria-label="Screenshot 4: The gate"></button>
-            <button type="button" aria-label="Screenshot 5: Portfolio"></button>
-            </div>
-          </div>
-        </div>
-
-        <dl class="stats">
-          <div><dt>hours from first commit to submission</dt><dd>26</dd></div>
-          <div><dt>pytest tests, with GitHub and Claude faked</dt><dd>99</dd></div>
-          <div><dt>from opening a pull request to a full review</dt><dd>~30<span>s</span></dd></div>
-          <div><dt>people on the team</dt><dd>2</dd></div>
-        </dl>
-
-        <div class="feature-body">
-          <section>
-            <h4 class="mono">How it works</h4>
-            <ul class="points">
-              <li><strong>Idea to tickets.</strong> Describe a project in plain words and Claude turns it into 3–5 tickets that say why and what “done” means, never how.</li>
-              <li><strong>Instant, Socratic review.</strong> The moment you open a pull request or push to it, a GitHub App webhook fires and Delphi starts reading the diff, with a review on the PR about 30 seconds later: questions, a security or correctness finding, and a hint ladder (the concept, then where to look, then a small snippet). It never posts the fix.</li>
-              <li><strong>Comprehension gate.</strong> Delphi asks 2–3 questions about your own diff. A weak answer gets the next hint, not approval. Pass, and the bot approves the PR.</li>
-            </ul>
-          </section>
-          <section>
-            <h4 class="mono">How we built it</h4>
-            <ul class="points">
-              <li><strong>26 hours at Hack the Change 2026</strong> with a teammate, built with Claude Code. We spent our time on what the reviewer should check, how hints escalate, and what earns approval.</li>
-              <li><strong>Claude reviewer:</strong> Pydantic-validated structured output, a Socratic review that flags security and correctness bugs (e.g. CWE-94 code injection), hints that never give the fix, and graded questions on the diff.</li>
-              <li><strong>FastAPI webhook pipeline:</strong> HMAC-SHA256 signature checks, an immediate response with the review run in the background, duplicate-delivery handling, and PR approval on a passing score; covered by a 99-test pytest suite.</li>
-            </ul>
-          </section>
-        </div>
-
-        <p class="stack mono">Python · FastAPI · Anthropic SDK · Pydantic · SQLModel · SQLite · GitHub Apps · React · TypeScript · Tailwind</p>
-      </article>
-
-      <div class="cards">
-        <article class="card" id="pendulum" data-reveal>
-          <div class="card-media media-black">
-            <video data-autoplay muted loop playsinline preload="metadata" poster="assets/pendulum-poster.jpg"
-                   aria-label="Screen recording of the pendulum simulation swinging and being dragged">
-              <source src="assets/pendulum-demo.mp4" type="video/mp4">
-            </video>
-          </div>
-          <div class="card-body">
-            <h3><a href="https://github.com/n3el-k/swinging-pendulum" target="_blank" rel="noopener">Swinging Pendulum <span class="arrow" aria-hidden="true">↗</span></a></h3>
-            <p>
-              A real-time physics simulation in C++ and Raylib. Gravity and damping are integrated along the arc each
-              frame with delta time, and you can drag the bob to set it swinging.
-            </p>
-            <p class="card-meta mono">C++ · Raylib</p>
-          </div>
-        </article>
-
-        <article class="card" id="gradient" data-reveal>
-          <div class="card-media">
-            <canvas data-loss-chart role="img"
-                    aria-label="Loss curves for learning rates 1, 0.1 and 2, computed live in the browser"></canvas>
-          </div>
-          <div class="card-body">
-            <h3><a href="https://github.com/n3el-k/gradient-descent-math-ia" target="_blank" rel="noopener">Gradient Descent, by Hand <span class="arrow" aria-hidden="true">↗</span></a></h3>
-            <p>
-              My IB Math HL paper. A 2-2-1 network in plain NumPy, with backpropagation derived by hand and no autograd,
-              trained on XOR to study how learning rate and initialization shape convergence. The chart re-runs it live.
-            </p>
-            <p class="card-meta mono">Python · NumPy · <a href="https://github.com/n3el-k/gradient-descent-math-ia/blob/main/math-paper.pdf" target="_blank" rel="noopener">Read the paper ↗</a></p>
-          </div>
-        </article>
-
-        <article class="card" id="opengl" data-reveal>
-          <div class="card-media">
-            <canvas data-cubes tabindex="0"
-                    aria-label="Interactive 3D scene of rotating textured cubes. Drag to look around; W A S D to move when focused."></canvas>
-            <span class="media-hint mono">drag to look · WASD to fly</span>
-          </div>
-          <div class="card-body">
-            <h3><a href="https://github.com/n3el-k/first-opengl" target="_blank" rel="noopener">First OpenGL <span class="arrow" aria-hidden="true">↗</span></a></h3>
-            <p>
-              Graphics from the ground up in C++: shaders, textures, GLM transforms and a free-look camera. This is my
-              final scene, running in WebGL with the original shaders, textures and cube positions.
-            </p>
-            <p class="card-meta mono">C++ · OpenGL · GLM</p>
-          </div>
-        </article>
+      <div class="accordion">
+        <details>
+          <summary>How it works</summary>
+          <ul class="notes">
+            <li><strong>Quick mode.</strong> One LLM call turns a sentence into a validated add, update or remove, checked against Pydantic models with Instructor. Works with Claude or a local Ollama model.</li>
+            <li><strong>Agent mode.</strong> A hand-written tool-calling loop on the Anthropic SDK (search, add, update, remove) with an 8-step cap. Validation errors go back to the model so it can correct itself.</li>
+            <li><strong>Safe by construction.</strong> The agent has no confirm tool, so it can't approve its own conflicts, and the session id never appears in a tool schema, so it can't reach another visitor's calendar.</li>
+          </ul>
+        </details>
+        <details>
+          <summary>Problems I solved</summary>
+          <ul class="notes">
+            <li><strong>The model was bad at date math,</strong> so now it doesn't do any. The prompt carries a 7-day lookup table, and the date logic became plain, testable Python.</li>
+            <li><strong>Local inference was too slow.</strong> I moved from Ollama to Claude Haiku behind a provider factory, which made quick mode feel instant and the agent loop practical.</li>
+            <li><strong>An eval failed, and the test was wrong.</strong> The agent asked which of two events I meant. I fixed the test instead of the prompt, so it still asks when a request is ambiguous.</li>
+          </ul>
+        </details>
       </div>
 
-      <div class="more" data-reveal>
-        <h3 class="more-title mono">Also on GitHub</h3>
-        <ul class="more-list">
-          <li>
-            <a href="https://github.com/n3el-k/cifar10-image-classification" target="_blank" rel="noopener">
-              <span class="more-name">CIFAR-10 classifier</span>
-              <span class="more-desc">CNN in PyTorch with data augmentation, from a small tanh net to a deeper ReLU one</span>
-              <span class="arrow" aria-hidden="true">↗</span>
-            </a>
-          </li>
-          <li>
-            <a href="https://github.com/n3el-k/sst2-sentiment-classification" target="_blank" rel="noopener">
-              <span class="more-name">SST-2 sentiment</span>
-              <span class="more-desc">Bidirectional RNN for sentiment classification, my first NLP project</span>
-              <span class="arrow" aria-hidden="true">↗</span>
-            </a>
-          </li>
-          <li>
-            <a href="https://github.com/n3el-k/build-llm-scratch" target="_blank" rel="noopener">
-              <span class="more-name">LLM from scratch</span>
-              <span class="more-desc">A transformer language model built step by step in PyTorch</span>
-              <span class="arrow" aria-hidden="true">↗</span>
-            </a>
-          </li>
-        </ul>
-      </div>
-    </section>
+      <p class="stack">Python · FastAPI · Anthropic SDK · Pydantic · Instructor · SQLite · JavaScript · Docker · Fly.io</p>
+      <a class="next" href="#delphi"><span>Next minimum</span><b>Delphi</b></a>
+    </article>
 
-    <section class="section wrap" id="about">
-      <header class="section-head" data-reveal>
-        <h2>About</h2>
-      </header>
+    <article class="sheet" id="delphi">
+      <p class="kicker">Hack the Change 2026, Calgary</p>
+      <h2>Delphi</h2>
+      <p class="summary">
+        AI writes code for you; Delphi makes sure you understand it. An AI senior reviewer reads your real GitHub
+        pull requests and won't approve one until you can explain what your code does.
+      </p>
+      <p class="actions">
+        <a class="btn btn-solid" href="https://youtu.be/YiKDJ3Ivrbg" target="_blank" rel="noopener">Watch the pitch <span aria-hidden="true">↗</span></a>
+        <a class="btn" href="https://github.com/n3el-k/delphi" target="_blank" rel="noopener">Source <span aria-hidden="true">↗</span></a>
+      </p>
 
-      <div class="about">
-        <div class="about-text" data-reveal>
-          <p class="about-lead">
-            I'm a first-year computer science student at the University of Calgary, most interested in machine
-            learning and the math underneath it.
-          </p>
-          <p>
-            I learn by rebuilding things: transformers with multi-head self-attention, CNNs, RNNs and autoencoders, written from scratch in PyTorch and checked on real benchmarks like CIFAR-10 and SST-2. Lately
-            I've been shipping software people can actually use, and learning how to test systems whose output isn't
-            deterministic.
-          </p>
-          <p>
-            Outside of code I'm a national-level karate athlete, competing in WKF kumite (U21&nbsp;−60&nbsp;kg) and
-            training daily alongside school. I've also volunteered 600+ hours as an assistant instructor.
-          </p>
+      <div class="gallery" data-gallery>
+        <div class="gallery-track" data-gallery-track tabindex="0" role="region" aria-label="Delphi screenshots">
+          <img class="frame" src="assets/delphi-1-dashboard.jpg" width="1200" height="796"
+               data-caption="Dashboard. The skill map fills in as you pass reviews."
+               alt="Delphi's dashboard: a 'Know thy code' welcome card explaining the three steps, a skill map from Frontend to Testing, and the AI rule">
+          <img class="frame" src="assets/delphi-2-tickets.jpg" width="1200" height="796" loading="lazy"
+               data-caption="New project. Tickets say why and what “done” means, never how."
+               alt="Tickets Delphi generated for a calculator app, the first expanded to show its 'Done when' checklist">
+          <img class="frame" src="assets/delphi-3-review.jpg" width="1200" height="796" loading="lazy"
+               data-caption="Code review. A security finding, a question and a hint, never the fix."
+               alt="Delphi's review of a pull request flagging a code injection bug (CWE-94) on line 32 of calculator.py, with a question and a first hint">
+          <img class="frame" src="assets/delphi-4-questions.jpg" width="1200" height="796" loading="lazy"
+               data-caption="The gate. Questions about your own diff, 70 to pass."
+               alt="Questions about the learner's own diff, each pointing at a line in calculator.py, with an answer box">
+          <img class="frame" src="assets/delphi-5-portfolio.jpg" width="1200" height="796" loading="lazy"
+               data-caption="Portfolio. Approved work and the security flaws you fixed."
+               alt="The learner's portfolio listing an approved pull request and the code injection fix">
         </div>
-
-        <div class="about-side" data-reveal>
-          <h3 class="side-title mono">Education &amp; experience</h3>
-          <ol class="timeline">
-            <li>
-              <span class="when mono">2026 – now</span>
-              <span class="what">BSc Computer Science</span>
-              <span class="where">University of Calgary</span>
-            </li>
-            <li>
-              <span class="when mono">2023 – now</span>
-              <span class="what">National-level karate athlete</span>
-              <span class="where">WKF kumite · U21 −60 kg</span>
-            </li>
-            <li>
-              <span class="when mono">2023 – 2026</span>
-              <span class="what">Assistant karate instructor</span>
-              <span class="where">600+ volunteer hours</span>
-            </li>
-          </ol>
-
-          <h3 class="side-title mono">Toolkit</h3>
-          <dl class="toolkit">
-            <div><dt>Languages</dt><dd>Python, C++, JavaScript, SQL</dd></div>
-            <div><dt>ML</dt><dd>PyTorch, NumPy, transformers, CNNs, RNNs</dd></div>
-            <div><dt>LLM &amp; backend</dt><dd>Anthropic API, Instructor, evals, FastAPI, Pydantic, SQLite</dd></div>
-            <div><dt>Tools</dt><dd>Docker, Git, pytest, Unix shell, Raylib</dd></div>
-            <div><dt>Math</dt><dd>Calculus, linear algebra</dd></div>
-          </dl>
+        <div class="gallery-bar">
+          <p aria-live="polite"><span data-gallery-count>1 / 5</span><span data-gallery-caption>Dashboard. The skill map fills in as you pass reviews.</span></p>
+          <div class="gallery-nav">
+            <button type="button" data-gallery-prev aria-label="Previous screenshot"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M10 3 5 8l5 5"/></svg></button>
+            <button type="button" data-gallery-next aria-label="Next screenshot"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="m6 3 5 5-5 5"/></svg></button>
+          </div>
         </div>
       </div>
-    </section>
 
-    <section class="section wrap contact" id="contact">
-      <canvas class="backdrop backdrop-end" data-backdrop data-cx="0.78" data-cy="0.55" aria-hidden="true"></canvas>
-      <header class="section-head" data-reveal>
-        <h2>Get in touch</h2>
-      </header>
-      <div data-reveal>
-        <p class="contact-lead">Open to internships and research opportunities. Email is the fastest way to reach me.</p>
-        <div class="email-row">
-          <a class="email" href="mailto:neel.kochhar28@gmail.com">neel.kochhar28@gmail.com</a>
-          <button class="btn btn-ghost btn-sm" type="button" data-copy="neel.kochhar28@gmail.com">Copy</button>
-        </div>
-        <ul class="contact-links">
-          <li><a href="https://github.com/n3el-k" target="_blank" rel="noopener">GitHub <span class="arrow" aria-hidden="true">↗</span></a></li>
-          <li><a href="https://www.linkedin.com/in/nk30" target="_blank" rel="noopener">LinkedIn <span class="arrow" aria-hidden="true">↗</span></a></li>
-          <li><a href="assets/neel-kochhar-resume.pdf" target="_blank" rel="noopener">Resume <span class="arrow" aria-hidden="true">↗</span></a></li>
-        </ul>
+      <dl class="metrics">
+        <div><dt>hours from first commit to submission</dt><dd>26</dd></div>
+        <div><dt>pytest tests, with GitHub and Claude faked</dt><dd>99</dd></div>
+        <div><dt>from opening a pull request to a full review</dt><dd>~30<small>s</small></dd></div>
+        <div><dt>people on the team, at my first hackathon</dt><dd>2</dd></div>
+      </dl>
+
+      <div class="accordion">
+        <details>
+          <summary>How it works</summary>
+          <ul class="notes">
+            <li><strong>Idea to tickets.</strong> Describe a project in plain words and Claude turns it into 3–5 tickets that say why and what “done” means, never how.</li>
+            <li><strong>Instant, Socratic review.</strong> The moment you open a pull request or push to it, a GitHub App webhook fires and Delphi starts reading the diff, with a review on the PR about 30 seconds later: questions, a security or correctness finding, and a hint ladder (the concept, then where to look, then a small snippet). It never posts the fix.</li>
+            <li><strong>Comprehension gate.</strong> Delphi asks 2–3 questions about your own diff. A weak answer gets the next hint, not approval. Pass, and the bot approves the PR.</li>
+          </ul>
+        </details>
+        <details>
+          <summary>How we built it</summary>
+          <ul class="notes">
+            <li><strong>26 hours at Hack the Change 2026</strong> with a teammate, built with Claude Code. We spent our time on what the reviewer should check, how hints escalate, and what earns approval.</li>
+            <li><strong>Claude reviewer:</strong> Pydantic-validated structured output, a Socratic review that flags security and correctness bugs (e.g. CWE-94 code injection), hints that never give the fix, and graded questions on the diff.</li>
+            <li><strong>FastAPI webhook pipeline:</strong> HMAC-SHA256 signature checks, an immediate response with the review run in the background, duplicate-delivery handling, and PR approval on a passing score; covered by a 99-test pytest suite.</li>
+          </ul>
+        </details>
       </div>
-    </section>
+
+      <p class="stack">Python · FastAPI · Anthropic SDK · Pydantic · SQLModel · SQLite · GitHub Apps · React · TypeScript · Tailwind</p>
+      <a class="next" href="#pytorch"><span>Next minimum</span><b>From scratch, in PyTorch</b></a>
+    </article>
+
+    <article class="sheet" id="pytorch">
+      <p class="kicker">PyTorch</p>
+      <h2>From scratch, in PyTorch</h2>
+      <p class="summary">
+        Three models written from scratch and checked on real benchmarks, CIFAR-10 and SST-2 among them.
+      </p>
+      <div class="repo-list">
+        <a href="https://github.com/n3el-k/cifar10-image-classification" target="_blank" rel="noopener">
+          <span><b>cifar10_classifier</b>CNN with data augmentation, from a small tanh net to a deeper ReLU one</span>
+          <span aria-hidden="true">↗</span>
+        </a>
+        <a href="https://github.com/n3el-k/sst2-sentiment-classification" target="_blank" rel="noopener">
+          <span><b>sst2_sentiment</b>Bidirectional RNN for sentiment classification, my first NLP project</span>
+          <span aria-hidden="true">↗</span>
+        </a>
+        <a href="https://github.com/n3el-k/build-llm-scratch" target="_blank" rel="noopener">
+          <span><b>llm_from_scratch</b>A transformer language model built step by step</span>
+          <span aria-hidden="true">↗</span>
+        </a>
+      </div>
+      <a class="next" href="#opengl"><span>Next minimum</span><b>First OpenGL</b></a>
+    </article>
+
+    <article class="sheet" id="opengl">
+      <p class="kicker">C++ · OpenGL · GLM</p>
+      <h2>First OpenGL</h2>
+      <p class="summary">
+        Graphics from the ground up: shaders, textures, GLM transforms and a free-look camera. This is my final
+        scene, running in WebGL with the original shaders, textures and cube positions.
+      </p>
+      <p class="actions">
+        <a class="btn" href="https://github.com/n3el-k/first-opengl" target="_blank" rel="noopener">Source <span aria-hidden="true">↗</span></a>
+      </p>
+      <div class="demo">
+        <canvas data-cubes tabindex="0"
+                aria-label="Interactive 3D scene of rotating textured cubes. Drag to look around; W A S D to move when focused."></canvas>
+        <span class="media-hint">Drag to look · WASD to fly</span>
+      </div>
+      <a class="next" href="#gradient"><span>Next minimum</span><b>Gradient Descent, by Hand</b></a>
+    </article>
+
+    <article class="sheet" id="gradient">
+      <p class="kicker">Python · NumPy</p>
+      <h2>Gradient Descent, by Hand</h2>
+      <p class="summary">
+        My IB Math HL paper, and the reason this site is a loss surface. A 2-2-1 network in plain NumPy with
+        backpropagation derived by hand and no autograd, trained on XOR to study how learning rate and
+        initialization shape convergence. The chart re-runs it live in your browser.
+      </p>
+      <p class="actions">
+        <a class="btn" href="https://github.com/n3el-k/gradient-descent-math-ia" target="_blank" rel="noopener">Source <span aria-hidden="true">↗</span></a>
+        <a class="btn" href="https://github.com/n3el-k/gradient-descent-math-ia/blob/main/math-paper.pdf" target="_blank" rel="noopener">Read the paper <span aria-hidden="true">↗</span></a>
+      </p>
+      <div class="demo">
+        <canvas data-loss-chart role="img"
+                aria-label="Loss curves for learning rates 1, 0.1 and 2, computed live in the browser"></canvas>
+      </div>
+      <a class="next" href="#pendulum"><span>Next minimum</span><b>Swinging Pendulum</b></a>
+    </article>
+
+    <article class="sheet" id="pendulum">
+      <p class="kicker">C++ · Raylib</p>
+      <h2>Swinging Pendulum</h2>
+      <p class="summary">
+        A real-time physics simulation. Gravity and damping are integrated along the arc each frame with delta
+        time. This is the same integrator, ported to JavaScript.
+      </p>
+      <p class="actions">
+        <a class="btn" href="https://github.com/n3el-k/swinging-pendulum" target="_blank" rel="noopener">Source <span aria-hidden="true">↗</span></a>
+      </p>
+      <div class="demo">
+        <canvas data-pendulum tabindex="0"
+                aria-label="Interactive pendulum. Drag the bob or use the arrow keys to set its angle."></canvas>
+        <span class="media-hint media-hint-top">Drag the bob</span>
+      </div>
+      <a class="next" href="#about"><span>Back to the start</span><b>About</b></a>
+    </article>
+
+    <article class="sheet" id="about">
+      <p class="kicker">Initial weights</p>
+      <h2>About</h2>
+      <div class="prose">
+        <p class="lead">
+          I'm a first-year computer science student at the University of Calgary, most interested in machine
+          learning and the math underneath it.
+        </p>
+        <p>
+          I learn by rebuilding things: transformers with multi-head self-attention, CNNs, RNNs and autoencoders,
+          written from scratch in PyTorch and checked on real benchmarks like CIFAR-10 and SST-2. Lately I've been
+          shipping software people can actually use, and learning how to test systems whose output isn't
+          deterministic.
+        </p>
+        <p>
+          Outside of code I'm a national-level karate athlete, competing in WKF kumite (U21&nbsp;−60&nbsp;kg) and
+          training daily alongside school. I've also volunteered 600+ hours as an assistant instructor.
+        </p>
+      </div>
+
+      <dl class="facts">
+        <div><dt>Languages</dt><dd>Python, C++, JavaScript, SQL</dd></div>
+        <div><dt>ML</dt><dd>PyTorch, NumPy, transformers, CNNs, RNNs</dd></div>
+        <div><dt>LLMs</dt><dd>Anthropic API, Instructor, evals</dd></div>
+        <div><dt>Backend</dt><dd>FastAPI, Pydantic, SQLite</dd></div>
+        <div><dt>Tools</dt><dd>Docker, Git, pytest, Unix shell, Raylib</dd></div>
+        <div><dt>Math</dt><dd>Calculus, linear algebra</dd></div>
+      </dl>
+
+      <div class="contact">
+        <p>Open to internships and research opportunities. Email is the fastest way to reach me.</p>
+        <div class="contact-row">
+          <a class="btn btn-solid" href="mailto:neel.kochhar28@gmail.com">neel.kochhar28@gmail.com</a>
+          <button class="btn" type="button" data-copy="neel.kochhar28@gmail.com">Copy</button>
+        </div>
+        <p class="actions">
+          <a class="btn" href="https://github.com/n3el-k" target="_blank" rel="noopener">GitHub <span aria-hidden="true">↗</span></a>
+          <a class="btn" href="https://www.linkedin.com/in/nk30" target="_blank" rel="noopener">LinkedIn <span aria-hidden="true">↗</span></a>
+          <a class="btn" href="assets/neel-kochhar-resume.pdf" target="_blank" rel="noopener">Resume <span aria-hidden="true">↗</span></a>
+        </p>
+      </div>
+      <a class="next" href="#cadence"><span>Lowest loss</span><b>Cadence</b></a>
+    </article>
   </main>
 
-  <footer class="foot wrap mono">
-    <span>© 2026 Neel Kochhar</span>
-    <a href="#top">Back to top ↑</a>
-  </footer>
-
-  <script src="js/main.js" defer></script>
+  <script src="js/main.js?v=24" defer></script>
   <script>window.goatcounter = { path: (p) => location.host + p }</script>
   <script data-goatcounter="https://neel-k.goatcounter.com/count" async src="https://gc.zgo.at/count.js"></script>
 </body>
